@@ -2,7 +2,7 @@
 FROM node:20-alpine AS deps
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci
+RUN npm install          # ← war: npm ci
 
 # ---- Builder ----
 FROM node:20-alpine AS builder
@@ -23,7 +23,6 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 
-# Datenordner
 RUN mkdir -p /app/data && chown nextjs:nodejs /app/data
 VOLUME ["/app/data"]
 
