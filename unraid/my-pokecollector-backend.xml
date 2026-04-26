@@ -3,8 +3,8 @@
   <Name>pokecollector-backend</Name>
   <Repository>ghcr.io/t4s3rf4c3/pokecollector-backend:latest</Repository>
   <Registry>https://github.com/T4s3rF4c3/pokecollector/pkgs/container/pokecollector-backend</Registry>
-  <Network>pokecollector</Network>
-  <MyIP/>
+  <Network>br0.3</Network>
+  <MyIP>192.168.180.64</MyIP>
   <Shell>bash</Shell>
   <Privileged>false</Privileged>
   <Support>https://github.com/T4s3rF4c3/pokecollector/issues</Support>
@@ -20,7 +20,7 @@
   <DateInstalled/>
   <DonateText/>
   <DonateLink/>
-  <Requires>PostgreSQL 15 must be running and accessible. Custom Docker network required: docker network create pokecollector</Requires>
+  <Requires>PostgreSQL 15 must be running and accessible. Container uses br0.3 macvlan network with fixed IP 192.168.180.64.</Requires>
   <Config Name="API Port" Target="8000" Default="8000" Mode="tcp" Description="Port for the FastAPI backend (also used by the frontend nginx proxy)." Type="Port" Display="always" Required="true" Mask="false">8000</Config>
   <Config Name="Backups" Target="/app/backups" Default="/mnt/user/appdata/pokecollector/backups" Mode="rw" Description="Directory for database backups created by the app." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/pokecollector/backups</Config>
   <Config Name="DATABASE_URL" Target="DATABASE_URL" Default="postgresql://pokemon:changeme@pokecollector-postgres:5432/pokemon_tcg" Mode="" Description="PostgreSQL connection string. Replace 'changeme' with your POSTGRES_PASSWORD. The hostname must match the container name of the postgres container." Type="Variable" Display="always" Required="true" Mask="false">postgresql://pokemon:changeme@pokecollector-postgres:5432/pokemon_tcg</Config>

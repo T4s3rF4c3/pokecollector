@@ -3,8 +3,8 @@
   <Name>pokecollector-frontend</Name>
   <Repository>ghcr.io/t4s3rf4c3/pokecollector-frontend:latest</Repository>
   <Registry>https://github.com/T4s3rF4c3/pokecollector/pkgs/container/pokecollector-frontend</Registry>
-  <Network>pokecollector</Network>
-  <MyIP/>
+  <Network>br0.3</Network>
+  <MyIP>192.168.180.65</MyIP>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
   <Support>https://github.com/T4s3rF4c3/pokecollector/issues</Support>
@@ -20,7 +20,7 @@
   <DateInstalled/>
   <DonateText/>
   <DonateLink/>
-  <Requires>pokecollector-backend must be running in the same Docker network. Custom Docker network required: docker network create pokecollector</Requires>
+  <Requires>pokecollector-backend must be running. Both containers must be in the br0.3 macvlan network with fixed IPs.</Requires>
   <Config Name="WebUI Port" Target="80" Default="3000" Mode="tcp" Description="Port to access the PokéCollector web interface." Type="Port" Display="always" Required="true" Mask="false">3000</Config>
-  <Config Name="BACKEND_HOST" Target="BACKEND_HOST" Default="pokecollector-backend" Mode="" Description="Container name of the backend. Must match the exact container name of pokecollector-backend on Unraid." Type="Variable" Display="always" Required="true" Mask="false">pokecollector-backend</Config>
+  <Config Name="BACKEND_HOST" Target="BACKEND_HOST" Default="192.168.180.64" Mode="" Description="IP-Adresse des pokecollector-backend Containers. nginx leitet /api/-Anfragen an http://BACKEND_HOST:8000 weiter." Type="Variable" Display="always" Required="true" Mask="false">192.168.180.64</Config>
 </Container>
