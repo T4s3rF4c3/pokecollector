@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>pokecollector-backend</Name>
+  <Repository>ghcr.io/t4s3rf4c3/pokecollector-backend:latest</Repository>
+  <Registry>https://github.com/T4s3rF4c3/pokecollector/pkgs/container/pokecollector-backend</Registry>
+  <Network>pokecollector</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/T4s3rF4c3/pokecollector/issues</Support>
+  <Project>https://github.com/T4s3rF4c3/pokecollector</Project>
+  <Overview>PokéCollector Backend — FastAPI service providing the REST API for the Pokemon TCG collection manager.</Overview>
+  <Category>Other:</Category>
+  <WebUI>http://[IP]:[PORT:8000]/docs</WebUI>
+  <TemplateURL/>
+  <Icon>https://raw.githubusercontent.com/T4s3rF4c3/pokecollector/main/preview-homescreen.png</Icon>
+  <ExtraParams>--restart=unless-stopped</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>PostgreSQL 15 must be running and accessible. Custom Docker network required: docker network create pokecollector</Requires>
+  <Config Name="API Port" Target="8000" Default="8000" Mode="tcp" Description="Port for the FastAPI backend (also used by the frontend nginx proxy)." Type="Port" Display="always" Required="true" Mask="false">8000</Config>
+  <Config Name="Backups" Target="/app/backups" Default="/mnt/user/appdata/pokecollector/backups" Mode="rw" Description="Directory for database backups created by the app." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/pokecollector/backups</Config>
+  <Config Name="DATABASE_URL" Target="DATABASE_URL" Default="postgresql://pokemon:changeme@pokecollector-postgres:5432/pokemon_tcg" Mode="" Description="PostgreSQL connection string. Replace 'changeme' with your POSTGRES_PASSWORD. The hostname must match the container name of the postgres container." Type="Variable" Display="always" Required="true" Mask="false">postgresql://pokemon:changeme@pokecollector-postgres:5432/pokemon_tcg</Config>
+  <Config Name="ADMIN_USERNAME" Target="ADMIN_USERNAME" Default="admin" Mode="" Description="Username for the initial admin account." Type="Variable" Display="always" Required="true" Mask="false">admin</Config>
+  <Config Name="ADMIN_PASSWORD" Target="ADMIN_PASSWORD" Default="" Mode="" Description="Password for the initial admin account." Type="Variable" Display="always" Required="true" Mask="true"></Config>
+  <Config Name="JWT_SECRET_KEY" Target="JWT_SECRET_KEY" Default="" Mode="" Description="Secret key used to sign JWT tokens. Use a long random string (e.g. output of: openssl rand -hex 32)." Type="Variable" Display="always" Required="true" Mask="true"></Config>
+  <Config Name="CORS_ORIGINS" Target="CORS_ORIGINS" Default="" Mode="" Description="Allowed CORS origins, comma-separated (e.g. http://192.168.1.100:3000). Leave empty to allow all." Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="TCGDEX_SYNC_LANGUAGES" Target="TCGDEX_SYNC_LANGUAGES" Default="en,de" Mode="" Description="Comma-separated list of languages to sync from TCGdex (e.g. en,de,fr)." Type="Variable" Display="always" Required="false" Mask="false">en,de</Config>
+  <Config Name="GEMINI_API_KEY" Target="GEMINI_API_KEY" Default="" Mode="" Description="Google Gemini API key for AI card recognition (optional)." Type="Variable" Display="advanced" Required="false" Mask="true"></Config>
+  <Config Name="TELEGRAM_BOT_TOKEN" Target="TELEGRAM_BOT_TOKEN" Default="" Mode="" Description="Telegram bot token for notifications (optional)." Type="Variable" Display="advanced" Required="false" Mask="true"></Config>
+  <Config Name="TELEGRAM_CHAT_ID" Target="TELEGRAM_CHAT_ID" Default="" Mode="" Description="Telegram chat ID for notifications (optional)." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+</Container>

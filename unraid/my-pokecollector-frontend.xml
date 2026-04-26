@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>pokecollector-frontend</Name>
+  <Repository>ghcr.io/t4s3rf4c3/pokecollector-frontend:latest</Repository>
+  <Registry>https://github.com/T4s3rF4c3/pokecollector/pkgs/container/pokecollector-frontend</Registry>
+  <Network>pokecollector</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/T4s3rF4c3/pokecollector/issues</Support>
+  <Project>https://github.com/T4s3rF4c3/pokecollector</Project>
+  <Overview>PokéCollector Frontend — React/nginx web UI for the Pokemon TCG collection manager. Proxies /api/ requests to the backend container.</Overview>
+  <Category>Other:</Category>
+  <WebUI>http://[IP]:[PORT:3000]</WebUI>
+  <TemplateURL/>
+  <Icon>https://raw.githubusercontent.com/T4s3rF4c3/pokecollector/main/preview-homescreen.png</Icon>
+  <ExtraParams>--restart=unless-stopped</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>pokecollector-backend must be running in the same Docker network. Custom Docker network required: docker network create pokecollector</Requires>
+  <Config Name="WebUI Port" Target="80" Default="3000" Mode="tcp" Description="Port to access the PokéCollector web interface." Type="Port" Display="always" Required="true" Mask="false">3000</Config>
+</Container>
