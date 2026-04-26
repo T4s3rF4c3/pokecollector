@@ -22,4 +22,5 @@
   <DonateLink/>
   <Requires>pokecollector-backend must be running in the same Docker network. Custom Docker network required: docker network create pokecollector</Requires>
   <Config Name="WebUI Port" Target="80" Default="3000" Mode="tcp" Description="Port to access the PokéCollector web interface." Type="Port" Display="always" Required="true" Mask="false">3000</Config>
+  <Config Name="BACKEND_HOST" Target="BACKEND_HOST" Default="pokecollector-backend" Mode="" Description="Container name of the backend. Must match the exact container name of pokecollector-backend on Unraid." Type="Variable" Display="always" Required="true" Mask="false">pokecollector-backend</Config>
 </Container>

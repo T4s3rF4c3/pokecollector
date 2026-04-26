@@ -48,6 +48,8 @@ services:
         PUBLIC_MODE: ${PUBLIC_MODE:-false}
     container_name: pokemon-frontend
     restart: unless-stopped
+    environment:
+      BACKEND_HOST: backend
     depends_on:
       - backend
     ports:
